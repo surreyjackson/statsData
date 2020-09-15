@@ -22,6 +22,7 @@
                     return ans.toString()
                 });
             console.log("parent" + parent, answer);
+            
         }
     </script>
 
@@ -44,7 +45,7 @@
     <div id="P2">
         <h3>Print the first planet object</h3>
         <script>
-            var answer = "please complete";
+            var answer = planets[0];
             report("#P2", answer)
             //will need to look at the console to confirm for array objects.
         </script>
@@ -55,8 +56,15 @@
     <div id="P3">
         <h3>Create an array of planet's names</h3>
         <script>
-            var answer = "please complete";
-            report("#P3", answer)
+            var names = [];
+            var x = 0;
+            while(x<=7)
+                {
+                names[x]=planets[x].name;
+                x++;
+                }
+            var answer = names;
+            report("#P3", answer);
         </script>
     </div>
 
@@ -66,7 +74,14 @@
     <div id="P4">
         <h3>Create an array of planet's distance from sun</h3>
         <script>
-            var answer = "please complete";
+            var distances = [];
+            var x = 0;
+            while(x<=7)
+                {
+                distances[x]=planets[x].distance;
+                x++;
+                }
+            var answer = distances;
             report("#P4", answer)
         </script>
     </div>
@@ -74,7 +89,14 @@
     <div id="P5">
         <h3>Create an array of planet's number of moons</h3>
         <script>
-            var answer = "please complete";
+            var moons = [];
+            var x = 0;
+            while(x<=7)
+                {
+                moons[x]=planets[x].moons;
+                x++;
+                }
+            var answer = moons;
             report("#P5", answer)
         </script>
     </div>
@@ -83,7 +105,14 @@
     <div id="P6">
         <h3>Create an array of planet's density</h3>
         <script>
-            var answer = "please complete";
+            var densities = [];
+            var x = 0;
+            while(x<=7)
+                {
+                densities[x]=planets[x].density;
+                x++;
+                }
+            var answer = densities;
             report("#P6", answer)
         </script>
     </div>
@@ -92,7 +121,14 @@
     <div id="P7">
         <h3>Report the mean number of planet Moons</h3>
         <script>
-            var answer = "please complete";
+            var x =0;
+            var moons = 0;
+            while(x<=7)
+                {
+                moons = moons + planets[x].moons;
+                x++;
+                }
+            var answer = moons / 7;
             report("#P7", answer)
         </script>
     </div>
@@ -113,7 +149,14 @@
     <div id="S2">
         <h3>Create an array with the names of the student images</h3>
         <script>
-            var answer = "please complete";
+            var names = [];
+            var x = 0;
+            while(x<=22)
+                {
+                names[x]=classroom[x].picture;
+                x++;
+                }
+            var answer = names;
             report("#S2", answer)
         </script>
     </div>
@@ -126,7 +169,7 @@
     <div id="S3">
         <h3>Print the grade the first student made on the final</h3>
         <script>
-            var answer = "please complete";
+            var answer = classroom[0].final[0].grade;
             report("#S3", answer)
         </script>
     </div>
@@ -136,7 +179,14 @@
     <div id="S4">
         <h3>Create an array of all the student grades on the final</h3>
         <script>
-            var answer = "please complete";
+            var grades = [];
+            var x = 0;
+            while(x<=22)
+                {
+                grades[x]=classroom[x].final[0].grade;
+                x++;
+                }
+            var answer = grades;
             report("#S4", answer)
         </script>
     </div>
@@ -163,7 +213,15 @@
     <div id="A2a">
         <h3>Report the array of all quiz grades for the first penguin.</h3>
         <script>
-            var answer = "please complete";
+            var grades = [];
+            var x = 0;
+            while (x<=37)
+                {
+                    var student = classroom[0];
+                    grades[x]=student.quizes[x].grade;
+                    x++;
+                }
+            var answer = grades;
             report("#A2a", answer)
         </script>
     </div>
@@ -173,7 +231,15 @@
     <div id="A2">
         <h3>Find the mean of the quiz grades for the first penguin.</h3>
         <script>
-            var answer = "please complete";
+            var grades = 0;
+            var x = 0;
+            while (x<=37)
+                {
+                    var student = classroom[0];
+                    grades += student.quizes[x].grade;
+                    x++;
+                }
+            var answer = grades/38;
             report("#A2", answer)
         </script>
     </div>
@@ -181,7 +247,18 @@
     <div id="A3">
         <h3>Create a function to find the mean of the quiz grades for a given penguin.</h3>
         <script>
-            var answer = "please complete";
+            var getMeanGrade = function(student)
+            {
+            var grades = 0;
+            var x = 0;
+            while (x<=37)
+                {
+                    grades += classroom[student].quizes[x].grade;
+                    x++;
+                }
+            return grades/38;
+            }
+            var answer = getMeanGrade;
             report("#A3", answer)
         </script>
     </div>
@@ -189,7 +266,10 @@
     <div id="A4">
         <h3>Create an array of the mean quiz score of each penguins. Use one line of "code"</h3>
         <script>
-            var answer = "please complete";
+            var means = [];
+            var x;
+            for (x=0;x<classroom.length;x++){means[x] = getMeanGrade(x);}
+            var answer = means;
             report("#A4", answer)
         </script>
     </div>
@@ -197,7 +277,11 @@
     <div id="A5">
         <h3>Find the mean of all the quiz scores of the class. (one number)</h3>
         <script>
-            var answer = "please complete";
+            var meansMean = 0;
+            var x;
+            for (x=0;x<classroom.length;x++)
+            {meansMean += getMeanGrade(x);}
+            var answer = meansMean/23;
             report("#A5", answer)
         </script>
     </div>
@@ -214,6 +298,7 @@
     <div id="A6">
         <h3>Create a function that takes a penguin object and returns an object that contains one attribute, the picture of that penguin</h3>
         <script>
+            
             var answer = "please complete";
             report("#A6", answer)
         </script>
